@@ -102,7 +102,7 @@ class Trainer(object):
             self.initialize_model()
 
         if self.framework == 'keras':
-			print("Train KERAS")
+			print("TTrain KERAS")
             self.model.fit_generator(self.train_datagen,
                                      validation_data=self.val_datagen,
                                      epochs=self.epochs,
