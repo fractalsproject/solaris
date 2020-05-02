@@ -102,7 +102,7 @@ class Trainer(object):
             self.initialize_model()
 
         if self.framework == 'keras':
-	    print("Train KERAS")
+            print("Train KERAS")
             self.model.fit_generator(self.train_datagen,
                                      validation_data=self.val_datagen,
                                      epochs=self.epochs,
@@ -117,7 +117,8 @@ class Trainer(object):
                 self.model.train()
                 for batch_idx, batch in enumerate(self.train_datagen):
                     if torch.cuda.is_available():
-			print("Train Pytorch CUDA AVAIL")
+			
+                        print("Train Pytorch CUDA AVAIL")
                         if self.config['data_specs'].get('additional_inputs',
                                                          None) is not None:
                             data = []
@@ -128,7 +129,8 @@ class Trainer(object):
                             data = batch['image'].cuda()
                         target = batch['mask'].cuda().float()
                     else:
-			print("Train Pytorch CUDA NOTAVAIL")
+			
+                        print("Train Pytorch CUDA NOTAVAIL")
                         if self.config['data_specs'].get('additional_inputs',
                                                          None) is not None:
                             data = []
