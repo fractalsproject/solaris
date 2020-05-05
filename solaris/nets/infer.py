@@ -19,6 +19,7 @@ class Inferer(object):
         self.model_name = self.config['model_name']
         # check if the model was trained as part of the same pipeline; if so,
         # use the output from that. If not, use the pre-trained model directly.
+		print("Inferer config", self.config)
         if self.config['train']:
             warn('Because the configuration specifies both training and '
                  'inference, solaris is switching the model weights path '
