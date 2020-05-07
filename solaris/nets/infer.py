@@ -77,7 +77,7 @@ class Inferer(object):
             print("processing %d/%d, %s" % (idx,len(infer_df['image']), im_path ) )
             outpath = os.path.join(self.output_dir, os.path.split(im_path)[1])
             if os.path.exists(outpath):
-                print("file exists %s", outpath )
+                print("file exists %s" % outpath )
                 continue
             inf_input, idx_refs, (
                 src_im_height, src_im_width) = inf_tiler(im_path)
