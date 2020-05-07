@@ -19,7 +19,7 @@ class Inferer(object):
         self.model_name = self.config['model_name']
         # check if the model was trained as part of the same pipeline; if so,
         # use the output from that. If not, use the pre-trained model directly.
-		print("Inferer config", self.config)
+        print("Inferer config", self.config)
         if self.config['train']:
             warn('Because the configuration specifies both training and '
                  'inference, solaris is switching the model weights path '
@@ -74,6 +74,11 @@ class Inferer(object):
                 self.config['inference_augmentation'])
             )
         for idx, im_path in enumerate(infer_df['image']):
+            print("processing %d/%d, %s" % (idx,len(infer_df['image']), im_path ) )
+            outpath = os.path.join(self.output_dir, os.path.split(im_path)[1])
+            if os.path.exists(outpath):
+                print("file exists %s", outpath )
+                continue
             inf_input, idx_refs, (
                 src_im_height, src_im_width) = inf_tiler(im_path)
 
