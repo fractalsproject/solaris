@@ -73,6 +73,15 @@ class Inferer(object):
             augmentations=process_aug_dict(
                 self.config['inference_augmentation'])
             )
+       
+        # check if final image was already processed...if so, assume the whole batch finished
+        fin = len(infer_df['image'])
+        im_path = infer_df['image'][fin-1] 
+        outpath = os.path.join(self.output_dir, os.path.split(im_path)[1])
+        if os.path.exists(outpath):
+            print("file exists %s.  assuming entire batch finished." % outpath )
+            return
+     
         for idx, im_path in enumerate(infer_df['image']):
             print("processing %d/%d, %s" % (idx,len(infer_df['image']), im_path ) )
             outpath = os.path.join(self.output_dir, os.path.split(im_path)[1])
