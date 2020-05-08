@@ -78,6 +78,7 @@ class Inferer(object):
         fin = len(infer_df['image'])
         im_path = infer_df['image'][fin-1] 
         outpath = os.path.join(self.output_dir, os.path.split(im_path)[1])
+        print("Checking for last %s" % outpath )
         if os.path.exists(outpath):
             print("file exists %s.  assuming entire batch finished." % outpath )
             return
